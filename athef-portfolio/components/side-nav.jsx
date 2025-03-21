@@ -193,45 +193,45 @@ export default function SideNav({ mode }) {
       <>
         {/* Mobile menu toggle button - fixed at bottom right */}
         <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="fixed bottom-4 right-4 z-40 bg-primary text-white p-3 rounded-full shadow-lg"
-          onClick={toggleMobileMenu}
-          onMouseEnter={playHoverSound}
-        >
-          {mobileMenuOpen ? <XIcon size={24} /> : <MenuIcon size={24} />}
-        </motion.button>
+    initial={{ opacity: 0, scale: 0.8 }}
+    animate={{ opacity: 1, scale: 1 }}
+    className="fixed bottom-4 right-4 z-40 bg-black/20 backdrop-blur-lg border border-white/10 text-white p-3 rounded-full shadow-md"
+    onClick={toggleMobileMenu}
+    onMouseEnter={playHoverSound}
+  >
+    {mobileMenuOpen ? <XIcon size={24} /> : <MenuIcon size={24} />}
+  </motion.button>
 
         {/* Mobile navigation menu */}
         <AnimatePresence>
           {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 50 }}
-              transition={{ type: "spring", damping: 20 }}
-              className="fixed bottom-20 right-4 z-40 bg-black/80 backdrop-blur-lg p-4 rounded-xl border border-white/10 shadow-xl"
-            >
-              <div className="flex flex-col space-y-3">
-                {navItems.map((item) => (
-                  <motion.button
-                    key={item.id}
-                    whileHover={{ x: 5 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => scrollToSection(item.id)}
-                    onMouseEnter={playHoverSound}
-                    className={`flex items-center space-x-3 py-2 px-4 rounded-lg transition-colors ${
-                      activeSection === item.id
-                        ? "bg-primary text-white"
-                        : "bg-gray-800/50 text-gray-300 hover:bg-gray-700/50"
-                    }`}
-                  >
-                    {item.icon}
-                    <span>{item.label}</span>
-                  </motion.button>
-                ))}
-              </div>
-            </motion.div>
+                <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 50 }}
+                transition={{ type: "spring", damping: 20 }}
+                className="fixed bottom-20 right-4 z-40 bg-black/20 backdrop-blur-lg px-4 py-3 rounded-xl border border-white/10 shadow-md"
+              >
+                <div className="flex flex-col space-y-3">
+                  {navItems.map((item) => (
+                    <motion.button
+                      key={item.id}
+                      whileHover={{ x: 5 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => scrollToSection(item.id)}
+                      onMouseEnter={playHoverSound}
+                      className={`flex items-center space-x-3 py-2 px-4 rounded-lg transition-colors ${
+                        activeSection === item.id
+                          ? "bg-primary text-white"
+                          : "bg-gray-800/50 text-gray-300 hover:bg-gray-700/50"
+                      }`}
+                    >
+                      {item.icon}
+                      <span>{item.label}</span>
+                    </motion.button>
+                  ))}
+                </div>
+              </motion.div>
           )}
         </AnimatePresence>
       </>

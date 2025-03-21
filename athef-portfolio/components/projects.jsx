@@ -27,38 +27,36 @@ export default function Projects({ mode }) {
       githubLink: "https://github.com/itsathefak/StayLuxe.git",
     },
     {
-        title: "CIBC Website Clone",
-        description:
-          "A clone of the CIBC banking website with additional features like stock market simulation and loan calculator.",
-        technologies: ["Vue.js", "Bootstrap", "Vue Router"],
-        details: [
-          "Developed a sleek and responsive UI using Vue.js and Bootstrap, ensuring a seamless experience across all devices.",
-          "Integrated a real-time stock market investing simulation to allow users to practice trading and track investments.",
-          "Built an interactive loan calculator to help users estimate monthly repayments based on customizable loan parameters.",
-          "Implemented Vue Router for smooth navigation across pages, enhancing the user experience with dynamic content loading.",
-        ],
-        video: "/videos/CIBC.mp4",
-        poster: "/images/cibc.jpg",
-        image: "/images/cibc.jpg",
-        liveLink: "https://cibccc.netlify.app/",
-        githubLink: "https://github.com/itsathefak/CIBC-smart-cash-offer.git",
-      },
-      {
-        title: "AppointMe",
-        description: "An appointment booking system connecting users with service providers for streamlined scheduling.",
-        technologies: ["MERN Stack", "JWT", "Axios", "Render", "Vercel"],
-        details: [
-          "Developed an appointment booking system connecting users with service providers for streamlined scheduling.",
-          "Utilized the MERN stack (MongoDB, Express.js, React.js, Node.js) for backend and frontend management.",
-          "Integrated JWT authentication for secure, role-based access control, and used Axios for smooth communication between frontend and backend.",
-          "Deployed the backend on Render and frontend on Vercel, and followed the Agile Scrum methodology, managed with Jira, to ensure continuous iteration and timely delivery.",
-        ],
-        video: "/videos/appointme.mp4",
-        poster: "/images/appointme-thumbnail.jpg",
-        image: "/images/appointme-thumbnail.jpg",
-        liveLink: "https://appointme-rust.vercel.app/",
-        githubLink: "https://github.com/itsathefak/Capstone.git",
-      },
+      title: "CIBC Website Clone",
+      description: "A clone of the CIBC banking website with additional features like stock market simulation and loan calculator.",
+      technologies: ["Vue.js", "Bootstrap", "Vue Router"],
+      details: [
+        "Developed a sleek and responsive UI using Vue.js and Bootstrap.",
+        "Integrated a real-time stock market simulation.",
+        "Built an interactive loan calculator.",
+        "Used Vue Router for smooth navigation.",
+      ],
+      iframe: `<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7307889955886837760?compact=1" height="399" width="100%" frameborder="0" allowfullscreen="" title="CIBC Project"></iframe>`,
+      poster: "/images/cibc.jpg",
+      image: "/images/cibc.jpg",
+      liveLink: "https://cibccc.netlify.app/",
+      githubLink: "https://github.com/itsathefak/CIBC-smart-cash-offer.git",
+    },
+    {
+      title: "AppointMe",
+      description: "An appointment booking system connecting users with service providers for streamlined scheduling.",
+      technologies: ["MERN Stack", "JWT", "Axios", "Render", "Vercel"],
+      details: [
+        "Built with MERN stack and JWT auth.",
+        "Frontend on Vercel, backend on Render.",
+        "Role-based access control and scheduling flow.",
+      ],
+      iframe: `<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7300549414652162049?compact=1" height="399" width="100%" frameborder="0" allowfullscreen="" title="AppointMe Project"></iframe>`,
+      poster: "/images/appointme-thumbnail.jpg",
+      image: "/images/appointme-thumbnail.jpg",
+      liveLink: "https://appointme-rust.vercel.app/",
+      githubLink: "https://github.com/itsathefak/Capstone.git",
+    },
     {
       title: "Coach Finder",
       description: "A platform where users can find coaches to help them pursue their courses and connect with them.",
@@ -365,28 +363,33 @@ export default function Projects({ mode }) {
               onClick={(e) => e.stopPropagation()}
             >
        <div className="relative w-full">
-  {selectedProject.video ? (
-    <div className="relative w-full aspect-video">
-      <video
-        className="w-full h-full rounded-t-xl"
-        controls
-        poster={selectedProject.poster} // Show thumbnail before play
-      >
-        <source src={selectedProject.video} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  ) : (
-    <div className="relative h-64 w-full overflow-hidden">
-      <Image
-        src={selectedProject.image || "/placeholder.svg?height=400&width=800"}
-        alt={selectedProject.title}
-        width={800}
-        height={400}
-        className="object-cover rounded-t-xl w-full h-full"
-      />
-    </div>
-  )}
+       {selectedProject.iframe ? (
+  <div className="relative w-full aspect-video">
+    <div dangerouslySetInnerHTML={{ __html: selectedProject.iframe }} />
+  </div>
+) : selectedProject.video ? (
+  <div className="relative w-full aspect-video">
+    <video
+      className="w-full h-full rounded-t-xl"
+      controls
+      poster={selectedProject.poster}
+    >
+      <source src={selectedProject.video} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+) : (
+  <div className="relative h-64 w-full overflow-hidden">
+    <Image
+      src={selectedProject.image || "/placeholder.svg?height=400&width=800"}
+      alt={selectedProject.title}
+      width={800}
+      height={400}
+      className="object-cover rounded-t-xl w-full h-full"
+    />
+  </div>
+)}
+
 
 
 
