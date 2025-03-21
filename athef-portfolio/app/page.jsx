@@ -11,15 +11,15 @@ export const metadata = {
   },
   openGraph: {
     title: "Athef Ayub Khan | Full Stack Developer",
-    description: "Full Stack Developer with a passion for tech and sustainability.",
+    description: "Portfolio of Athef Ayub Khan – building AI Agents, MERN apps, and sustainable tech.",
     url: "https://www.athefak.com",
     siteName: "Athef Ayub Khan Portfolio",
     images: [
       {
-        url: "https://www.athefak.com/preview.jpg",
+        url: "/preview.jpg",
         width: 1200,
         height: 630,
-        alt: "Preview of Athef Ayub Khan's portfolio",
+        alt: "Preview of Athef Ayub Khan Portfolio Website",
       },
     ],
     type: "website",
@@ -27,10 +27,12 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Athef Ayub Khan | Full Stack Developer",
-    description: "Full Stack Developer with a passion for tech and sustainability.",
-    images: ["https://www.athefak.com/preview.jpg"],
+    description: "Building powerful full-stack apps with MERN and a passion for sustainability.",
+    images: ["/preview.jpg"],
   },
 }
+
+
 
 
 export default function Home() {
