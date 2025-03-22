@@ -36,6 +36,11 @@ export default function Skills({ mode }) {
       level: 85,
     },
     {
+      name: "Next.js",
+      icon: "/logos/next.svg",
+      level: 80,
+    },
+    {
       name: "Node.js",
       icon: "/logos/nodejs.svg",
       level: 85,
@@ -71,6 +76,11 @@ export default function Skills({ mode }) {
       level: 90,
     },
     {
+      name: "Vite",
+      icon: "/logos/vite.svg",
+      level: 85,
+    },
+    {
       name: "Firebase",
       icon: "/logos/firebase.svg",
       level: 75,
@@ -81,9 +91,19 @@ export default function Skills({ mode }) {
       level: 70,
     },
     {
+      name: "Figma",
+      icon: "/logos/figma.svg",
+      level: 90,
+    },
+    {
       name: "Git",
       icon: "/logos/git.svg",
       level: 85,
+    },
+    {
+      name: "Jira",
+      icon: "/logos/jira.svg",
+      level: 90,
     },
   ]
 
@@ -124,7 +144,7 @@ export default function Skills({ mode }) {
       level: 70,
     },
     {
-      name: "Biodiversity Management",
+      name: "Transdisciplinary Learning",
       icon: "/icons/biodiversity.svg",
       level: 75,
     },
