@@ -13,8 +13,9 @@ export default function VolunteeringExperience() {
   const volunteering = [
     {
       organization: "Canadian Council of Invasive Species",
-      link: "#",
-      image: "/images/ccis.jpg",
+      link: "https://www.linkedin.com/in/athefak/details/volunteering-experiences/1714767746415/single-media-viewer/?profileId=ACoAACysOYYBQJIJx9kgvIdZsy9xrCycvfcFsdo",
+      image: "/images/ynk-certificate.jpg",
+      certificate: "/images/ynk-certificate.jpg",
       description:
         "Volunteered with the Canadian Council of Invasive Species to help raise awareness about invasive species and their impact on local ecosystems. Participated in community education programs and assisted with invasive species removal projects.",
       role: "Environmental Education Volunteer",
@@ -26,23 +27,10 @@ export default function VolunteeringExperience() {
       ],
     },
     {
-      organization: "Youth Nature Keepers",
-      link: "#",
-      image: "/images/ynk.jpg",
-      description:
-        "Worked with Youth Nature Keepers to engage young people in environmental conservation activities. Helped organize nature walks, clean-up events, and educational workshops focused on biodiversity and ecosystem health.",
-      role: "Youth Program Coordinator",
-      period: "2022 - 2023",
-      achievements: [
-        "Coordinated monthly nature exploration activities for youth aged 10-16",
-        "Developed a 'Junior Naturalist' program that was adopted by three local schools",
-        "Mentored 15 youth leaders in environmental advocacy and project management",
-      ],
-    },
-    {
       organization: "Canadian Service Corps",
-      link: "#",
-      image: "/images/csc.jpg",
+      link: "https://www.linkedin.com/in/athefak/details/volunteering-experiences/1714768453773/single-media-viewer/?profileId=ACoAACysOYYBQJIJx9kgvIdZsy9xrCycvfcFsdo",
+      image: "/images/csc-certificate.jpg",
+      certificate: "/images/csc-certificate.jpg",
       description:
         "Served with the Canadian Service Corps on environmental sustainability projects. Focused on community-based initiatives to reduce waste, promote renewable energy, and enhance green spaces in urban areas.",
       role: "Environmental Project Volunteer",
@@ -54,9 +42,25 @@ export default function VolunteeringExperience() {
       ],
     },
     {
+      organization: "Youth Nature Keepers",
+      link: "https://www.linkedin.com/in/athefak/details/volunteering-experiences/1714768453773/single-media-viewer/?profileId=ACoAACysOYYBQJIJx9kgvIdZsy9xrCycvfcFsdo",
+      image: "/images/ynk-certificate.jpg",
+      certificate: "/images/ynk-certificate.jpg",
+      description:
+        "Worked with Youth Nature Keepers to engage young people in environmental conservation activities. Helped organize nature walks, clean-up events, and educational workshops focused on biodiversity and ecosystem health.",
+      role: "Youth Program Coordinator",
+      period: "2022 - 2023",
+      achievements: [
+        "Coordinated monthly nature exploration activities for youth aged 10-16",
+        "Developed a 'Junior Naturalist' program that was adopted by three local schools",
+        "Mentored 15 youth leaders in environmental advocacy and project management",
+      ],
+    },
+    {
       organization: "Climate Reality Project Canada",
-      link: "#",
+      link: "https://www.linkedin.com/in/athefak/details/volunteering-experiences/1714769184722/single-media-viewer/?profileId=ACoAACysOYYBQJIJx9kgvIdZsy9xrCycvfcFsdo",
       image: "/images/crpc.jpg",
+      certificate: "/images/crpc.jpg",
       description:
         "Volunteered with Climate Reality Project Canada to promote climate change awareness and advocate for policy changes. Participated in climate education campaigns and community outreach programs.",
       role: "Climate Advocate",
@@ -163,12 +167,13 @@ export default function VolunteeringExperience() {
               onClick={(e) => e.stopPropagation()}
             >
               <div className="relative h-64 w-full">
-                <Image
-                  src={selectedOrg.image || "/placeholder.svg?height=400&width=800"}
-                  alt={selectedOrg.organization}
-                  fill
-                  className="object-cover rounded-t-xl"
-                />
+              <Image
+  src={selectedOrg.certificate || selectedOrg.image || "/placeholder.svg?height=400&width=800"}
+  alt={`${selectedOrg.organization} Certificate`}
+  fill
+  className="object-cover rounded-t-xl"
+/>
+
                 <button
                   onClick={closeOrgDetails}
                   className="absolute top-4 right-4 bg-black/50 p-2 rounded-full hover:bg-black/70 transition-colors"

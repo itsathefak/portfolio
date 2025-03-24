@@ -1,34 +1,36 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { ExternalLinkIcon, GithubIcon, XIcon, InfoIcon } from "lucide-react"
-import { useSound } from "@/components/sound-provider"
-import Image from "next/image"
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ExternalLinkIcon, GithubIcon, XIcon, InfoIcon } from "lucide-react";
+import { useSound } from "@/components/sound-provider";
+import Image from "next/image";
 
 export default function Projects({ mode }) {
-  const { playHoverSound, playClickSound } = useSound()
-  const [selectedProject, setSelectedProject] = useState(null)
+  const { playHoverSound, playClickSound } = useSound();
+  const [selectedProject, setSelectedProject] = useState(null);
 
   const techProjects = [
     {
       title: "StayLuxe",
-      description: "A luxury hotel booking application allowing users to browse and book luxury hotel rooms online.",
+      description:
+        "A luxury hotel booking application allowing users to browse and book luxury hotel rooms online.",
       technologies: ["EJS", "Node.js", "MongoDB", "RESTful APIs", "Mapbox"],
       details: [
         "Built using EJS, Node.js, and MongoDB, with dynamic content rendering and efficient database management.",
         "Implemented RESTful APIs for handling booking data, user authentication, and hotel information.",
         "Integrated Mapbox for geocoding to provide location-based hotel searches and weather API for real-time weather updates at the destination.",
       ],
-      video: "/videos/stayluxe.mp4", 
-      poster: "/images/stayluxe-thumbnail.jpg", 
+      video: "/videos/stayluxe.mp4",
+      poster: "/images/stayluxe-thumbnail.jpg",
       image: "/images/stayluxe-thumbnail.jpg",
       liveLink: "https://stayluxe.onrender.com/listings/",
       githubLink: "https://github.com/itsathefak/StayLuxe.git",
     },
     {
       title: "CIBC Website Clone",
-      description: "A clone of the CIBC banking website with additional features like stock market simulation and loan calculator.",
+      description:
+        "A clone of the CIBC banking website with additional features like stock market simulation and loan calculator.",
       technologies: ["Vue.js", "Bootstrap", "Vue Router"],
       details: [
         "Developed a sleek and responsive UI using Vue.js and Bootstrap.",
@@ -44,7 +46,8 @@ export default function Projects({ mode }) {
     },
     {
       title: "Portfolio",
-      description: "My personal portfolio showcasing projects, skills, and creative experiments in web development.",
+      description:
+        "My personal portfolio showcasing projects, skills, and creative experiments in web development.",
       technologies: [
         "Next.js",
         "Tailwind CSS",
@@ -70,7 +73,8 @@ export default function Projects({ mode }) {
     },
     {
       title: "AppointMe",
-      description: "An appointment booking system connecting users with service providers for streamlined scheduling.",
+      description:
+        "An appointment booking system connecting users with service providers for streamlined scheduling.",
       technologies: ["MERN Stack", "JWT", "Axios", "Render", "Vercel"],
       details: [
         "Built with MERN stack and JWT auth.",
@@ -85,7 +89,8 @@ export default function Projects({ mode }) {
     },
     {
       title: "Coach Finder",
-      description: "A platform where users can find coaches to help them pursue their courses and connect with them.",
+      description:
+        "A platform where users can find coaches to help them pursue their courses and connect with them.",
       technologies: ["Vue.js", "Firebase", "Node.js", "Vuex", "Vue Router"],
       details: [
         "Developed a responsive web application using Vue.js for the frontend and Firebase for backend services.",
@@ -99,7 +104,8 @@ export default function Projects({ mode }) {
     },
     {
       title: "Monster Slayer Game",
-      description: "An interactive browser-based game built with Vue.js fundamentals where players battle monsters.",
+      description:
+        "An interactive browser-based game built with Vue.js fundamentals where players battle monsters.",
       technologies: ["Vue.js", "JavaScript", "CSS", "HTML"],
       details: [
         "Created an engaging game interface with health bars, attack buttons, and battle log.",
@@ -130,7 +136,14 @@ export default function Projects({ mode }) {
       title: "Employee Management System",
       description:
         "A comprehensive MERN stack application for managing employee records with advanced search and filtering capabilities.",
-      technologies: ["MongoDB", "Express.js", "React.js", "Node.js", "GraphQL", "Apollo"],
+      technologies: [
+        "MongoDB",
+        "Express.js",
+        "React.js",
+        "Node.js",
+        "GraphQL",
+        "Apollo",
+      ],
       details: [
         "Developed a full-featured Employee Management System with CRUD operations for employee records.",
         "Implemented GraphQL and Apollo Client for efficient data fetching and state management.",
@@ -142,14 +155,16 @@ export default function Projects({ mode }) {
       ],
       image: "/images/ems.jpg",
       liveLink: "#",
-      githubLink: "https://github.com/itsathefak/Employee-Management-System-EMS-.git",
+      githubLink:
+        "https://github.com/itsathefak/Employee-Management-System-EMS-.git",
     },
-  ]
+  ];
 
   const environmentalProjects = [
     {
       title: "EcoWander Canada",
-      description: "A web application designed to promote sustainable travel options across Canada.",
+      description:
+        "A web application designed to promote sustainable travel options across Canada.",
       technologies: ["React", "Node.js", "MongoDB", "Mapbox", "Tailwind CSS"],
       details: [
         "Providing travelers with eco-friendly travel recommendations, including low-carbon transportation options.",
@@ -167,24 +182,24 @@ export default function Projects({ mode }) {
         "Seasonal guides for responsible outdoor activities",
       ],
     },
-  ]
+  ];
 
-  const currentProjects = mode === "tech" ? techProjects : environmentalProjects
+  const currentProjects =
+    mode === "tech" ? techProjects : environmentalProjects;
 
   const openProjectDetails = (project) => {
-    playClickSound()
-    setSelectedProject(project)
-  }
+    playClickSound();
+    setSelectedProject(project);
+  };
 
   const closeProjectDetails = () => {
-    playClickSound()
-    setSelectedProject(null)
-  }
+    playClickSound();
+    setSelectedProject(null);
+  };
 
   return (
-<section id="projects" className="py-20 relative">
-  <div className="container mx-auto px-4">
-
+    <section id="projects" className="py-20 relative">
+      <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -198,7 +213,9 @@ export default function Projects({ mode }) {
             className="text-center mb-16"
           >
             <h2 className="text-3xl font-bold mb-4 inline-block relative">
-              {mode === "tech" ? "Technical Projects" : "Future Environmental Projects"}
+              {mode === "tech"
+                ? "Technical Projects"
+                : "Future Environmental Projects"}
               <motion.span
                 className="absolute -bottom-2 left-0 w-full h-1 bg-primary"
                 initial={{ width: 0 }}
@@ -225,7 +242,9 @@ export default function Projects({ mode }) {
                 >
                   <div className="relative h-48 w-full overflow-hidden">
                     <Image
-                      src={project.image || "/placeholder.svg?height=200&width=400"}
+                      src={
+                        project.image || "/placeholder.svg?height=200&width=400"
+                      }
                       alt={project.title}
                       fill
                       className="object-cover transition-transform group-hover:scale-105 duration-500"
@@ -238,10 +257,15 @@ export default function Projects({ mode }) {
                   </div>
                   <div className="p-6 flex-grow">
                     <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                    <p className="text-gray-300 mb-4 line-clamp-2">{project.description}</p>
+                    <p className="text-gray-300 mb-4 line-clamp-2">
+                      {project.description}
+                    </p>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.technologies.map((tech) => (
-                        <span key={tech} className="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full">
+                        <span
+                          key={tech}
+                          className="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full"
+                        >
                           {tech}
                         </span>
                       ))}
@@ -259,25 +283,27 @@ export default function Projects({ mode }) {
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => {
-                            e.stopPropagation()
-                            playClickSound()
+                            e.stopPropagation();
+                            playClickSound();
                           }}
                           className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
                         >
                           <GithubIcon className="h-4 w-4" />
                         </a>
-                        <a
-                          href={project.liveLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => {
-                            e.stopPropagation()
-                            playClickSound()
-                          }}
-                          className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-                        >
-                          <ExternalLinkIcon className="h-4 w-4" />
-                        </a>
+                        {project.liveLink && project.liveLink !== "#" && (
+                          <a
+                            href={project.liveLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              playClickSound();
+                            }}
+                            className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                          >
+                            <ExternalLinkIcon className="h-4 w-4" />
+                          </a>
+                        )}
                       </div>
                     )}
                   </div>
@@ -298,61 +324,62 @@ export default function Projects({ mode }) {
                   onClick={() => openProjectDetails(project)}
                   className="bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all cursor-pointer h-full flex flex-col group max-w-lg"
                 >
-      <div className="relative h-48 w-full overflow-hidden">
-  {project.video ? (
-    <div className="relative w-full h-full">
-      {/* Display the thumbnail image initially */}
-      <Image
-        src={project.poster}
-        alt={`${project.title} thumbnail`}
-        width={400}
-        height={200}
-        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 rounded-lg"
-        style={{ opacity: 1 }} // Initially visible
-      />
+                  <div className="relative h-48 w-full overflow-hidden">
+                    {project.video ? (
+                      <div className="relative w-full h-full">
+                        {/* Display the thumbnail image initially */}
+                        <Image
+                          src={project.poster}
+                          alt={`${project.title} thumbnail`}
+                          width={400}
+                          height={200}
+                          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 rounded-lg"
+                          style={{ opacity: 1 }} // Initially visible
+                        />
 
-      {/* Video element */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover transition-transform group-hover:scale-105 duration-500 rounded-lg"
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        onMouseEnter={(e) => {
-          e.target.play()
-          e.target.previousElementSibling.style.opacity = 0 // Hide thumbnail
-        }}
-        onMouseLeave={(e) => {
-          e.target.pause()
-          e.target.previousElementSibling.style.opacity = 1 // Restore thumbnail
-        }}
-      >
-        <source src={project.video} type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  ) : (
-<div className="relative h-48 w-full overflow-hidden">
-  <Image
-    src={project.image || "/placeholder.svg?height=200&width=400"} // Match the Tech projects' placeholder
-    alt={project.title}
-    fill // Ensures image fills the container
-    className="object-cover transition-transform group-hover:scale-105 duration-500 rounded-lg"
-  />
-</div>
-
-
-  )}
-
-
-
+                        {/* Video element */}
+                        <video
+                          className="absolute inset-0 w-full h-full object-cover transition-transform group-hover:scale-105 duration-500 rounded-lg"
+                          muted
+                          loop
+                          playsInline
+                          preload="metadata"
+                          onMouseEnter={(e) => {
+                            e.target.play();
+                            e.target.previousElementSibling.style.opacity = 0; // Hide thumbnail
+                          }}
+                          onMouseLeave={(e) => {
+                            e.target.pause();
+                            e.target.previousElementSibling.style.opacity = 1; // Restore thumbnail
+                          }}
+                        >
+                          <source src={project.video} type="video/mp4" />
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                    ) : (
+                      <div className="relative h-48 w-full overflow-hidden">
+                        <Image
+                          src={
+                            project.image ||
+                            "/placeholder.svg?height=200&width=400"
+                          } // Match the Tech projects' placeholder
+                          alt={project.title}
+                          fill // Ensures image fills the container
+                          className="object-cover transition-transform group-hover:scale-105 duration-500 rounded-lg"
+                        />
+                      </div>
+                    )}
                   </div>
                   <div className="p-6 flex-grow">
                     <h3 className="text-xl font-bold mb-2">{project.title}</h3>
                     <p className="text-gray-300 mb-4">{project.description}</p>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.technologies.map((tech) => (
-                        <span key={tech} className="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full">
+                        <span
+                          key={tech}
+                          className="bg-primary/10 text-primary text-xs px-2 py-1 rounded-full"
+                        >
                           {tech}
                         </span>
                       ))}
@@ -388,36 +415,40 @@ export default function Projects({ mode }) {
               className="bg-slate-900 rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
-       <div className="relative w-full">
-       {selectedProject.iframe ? (
-  <div className="relative w-full aspect-video">
-    <div dangerouslySetInnerHTML={{ __html: selectedProject.iframe }} />
-  </div>
-) : selectedProject.video ? (
-  <div className="relative w-full aspect-video">
-    <video
-      className="w-full h-full rounded-t-xl"
-      controls
-      poster={selectedProject.poster}
-    >
-      <source src={selectedProject.video} type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  </div>
-) : (
-  <div className="relative h-64 w-full overflow-hidden">
-    <Image
-      src={selectedProject.image || "/placeholder.svg?height=400&width=800"}
-      alt={selectedProject.title}
-      width={800}
-      height={400}
-      className="object-cover rounded-t-xl w-full h-full"
-    />
-  </div>
-)}
-
-
-
+              <div className="relative w-full">
+                {selectedProject.iframe ? (
+                  <div className="relative w-full aspect-video">
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: selectedProject.iframe,
+                      }}
+                    />
+                  </div>
+                ) : selectedProject.video ? (
+                  <div className="relative w-full aspect-video">
+                    <video
+                      className="w-full h-full rounded-t-xl"
+                      controls
+                      poster={selectedProject.poster}
+                    >
+                      <source src={selectedProject.video} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                ) : (
+                  <div className="relative h-64 w-full overflow-hidden">
+                    <Image
+                      src={
+                        selectedProject.image ||
+                        "/placeholder.svg?height=400&width=800"
+                      }
+                      alt={selectedProject.title}
+                      width={800}
+                      height={400}
+                      className="object-cover rounded-t-xl w-full h-full"
+                    />
+                  </div>
+                )}
 
                 <button
                   onClick={closeProjectDetails}
@@ -432,14 +463,21 @@ export default function Projects({ mode }) {
                 )}
               </div>
               <div className="p-6">
-                <h3 className="text-2xl font-bold mb-2">{selectedProject.title}</h3>
-                <p className="text-gray-300 mb-6">{selectedProject.description}</p>
+                <h3 className="text-2xl font-bold mb-2">
+                  {selectedProject.title}
+                </h3>
+                <p className="text-gray-300 mb-6">
+                  {selectedProject.description}
+                </p>
 
                 <div className="mb-6">
                   <h4 className="text-lg font-semibold mb-3">Technologies</h4>
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.technologies.map((tech) => (
-                      <span key={tech} className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">
+                      <span
+                        key={tech}
+                        className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm"
+                      >
                         {tech}
                       </span>
                     ))}
@@ -448,7 +486,9 @@ export default function Projects({ mode }) {
 
                 {selectedProject.details && (
                   <div className="mb-6">
-                    <h4 className="text-lg font-semibold mb-3">Project Details</h4>
+                    <h4 className="text-lg font-semibold mb-3">
+                      Project Details
+                    </h4>
                     <ul className="list-disc pl-5 space-y-2 text-gray-300">
                       {selectedProject.details.map((detail, i) => (
                         <li key={i}>{detail}</li>
@@ -459,7 +499,9 @@ export default function Projects({ mode }) {
 
                 {selectedProject.features && (
                   <div className="mb-6">
-                    <h4 className="text-lg font-semibold mb-3">Planned Features</h4>
+                    <h4 className="text-lg font-semibold mb-3">
+                      Planned Features
+                    </h4>
                     <ul className="list-disc pl-5 space-y-2 text-gray-300">
                       {selectedProject.features.map((feature, i) => (
                         <li key={i}>{feature}</li>
@@ -480,16 +522,19 @@ export default function Projects({ mode }) {
                       <GithubIcon className="h-5 w-5 mr-2" />
                       View Code
                     </a>
-                    <a
-                      href={selectedProject.liveLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center bg-primary hover:bg-primary/80 transition-colors px-4 py-2 rounded-lg"
-                      onClick={playClickSound}
-                    >
-                      <ExternalLinkIcon className="h-5 w-5 mr-2" />
-                      Live Demo
-                    </a>
+                    {selectedProject.liveLink && selectedProject.liveLink !== "#" && (
+  <a
+    href={selectedProject.liveLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center bg-primary hover:bg-primary/80 transition-colors px-4 py-2 rounded-lg"
+    onClick={playClickSound}
+  >
+    <ExternalLinkIcon className="h-5 w-5 mr-2" />
+    Live Demo
+  </a>
+)}
+
                   </div>
                 )}
               </div>
@@ -498,6 +543,5 @@ export default function Projects({ mode }) {
         )}
       </AnimatePresence>
     </section>
-  )
+  );
 }
-
