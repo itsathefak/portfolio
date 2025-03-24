@@ -20,8 +20,8 @@ export default function Projects({ mode }) {
         "Implemented RESTful APIs for handling booking data, user authentication, and hotel information.",
         "Integrated Mapbox for geocoding to provide location-based hotel searches and weather API for real-time weather updates at the destination.",
       ],
-      video: "/videos/stayluxe.mp4", // Video in public folder
-      poster: "/images/stayluxe-thumbnail.jpg", // Thumbnail image
+      video: "/videos/stayluxe.mp4", 
+      poster: "/images/stayluxe-thumbnail.jpg", 
       image: "/images/stayluxe-thumbnail.jpg",
       liveLink: "https://stayluxe.onrender.com/listings/",
       githubLink: "https://github.com/itsathefak/StayLuxe.git",
@@ -41,6 +41,32 @@ export default function Projects({ mode }) {
       image: "/images/cibc.jpg",
       liveLink: "https://cibccc.netlify.app/",
       githubLink: "https://github.com/itsathefak/CIBC-smart-cash-offer.git",
+    },
+    {
+      title: "Portfolio",
+      description: "My personal portfolio showcasing projects, skills, and creative experiments in web development.",
+      technologies: [
+        "Next.js",
+        "Tailwind CSS",
+        "ShadCN UI",
+        "Lucide React",
+        "Framer Motion",
+        "Mapbox GL",
+        "Canvas Confetti",
+        "Radix UI",
+      ],
+      details: [
+        "Built with Next.js 15 and React 19 for cutting-edge performance and developer experience.",
+        "Styled using Tailwind CSS with animated components powered by ShadCN and Framer Motion.",
+        "Dynamic weather widgets, live time, custom side navigation, and embedded video demos.",
+        "Interactive map integration using Mapbox GL and sound-enhanced UI with hover/click effects.",
+        "Custom-built contact form with Nodemailer integration for secure email handling.",
+      ],
+      video: "/videos/portfolio.mp4",
+      poster: "/images/portfolio-thumbnail.jpg",
+      image: "/images/portfolio-thumbnail.jpg",
+      liveLink: "https://www.athefak.com/",
+      githubLink: "https://github.com/itsathefak/portfolio.git",
     },
     {
       title: "AppointMe",
