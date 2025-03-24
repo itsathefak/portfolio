@@ -392,7 +392,6 @@ export default function InteractivePuzzle({ mode }) {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: index * 0.01 }}
                     onClick={() => handleTileClick(index)}
-                    onMouseEnter={playHoverSound}
                     className={`relative rounded-md overflow-hidden ${
                       tile.id === 0 ? "invisible" : "cursor-pointer hover:brightness-110"
                     } ${completed ? "border-2 border-green-500" : ""}`}

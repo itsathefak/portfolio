@@ -217,7 +217,6 @@ useEffect(() => {
                         onChange={handleChange}
                         required
                         className="bg-white/5 border-white/10 focus:border-primary rounded-lg"
-                        onMouseEnter={playHoverSound}
                       />
                     </div>
                     <div>
@@ -229,7 +228,6 @@ useEffect(() => {
                         onChange={handleChange}
                         required
                         className="bg-white/5 border-white/10 focus:border-primary rounded-lg"
-                        onMouseEnter={playHoverSound}
                       />
                     </div>
                     <div>
@@ -240,7 +238,6 @@ useEffect(() => {
                         onChange={handleChange}
                         required
                         className="bg-white/5 border-white/10 focus:border-primary rounded-lg"
-                        onMouseEnter={playHoverSound}
                       />
                     </div>
                     <div>
@@ -252,7 +249,6 @@ useEffect(() => {
                         rows={5}
                         required
                         className="bg-white/5 border-white/10 focus:border-primary resize-none rounded-lg"
-                        onMouseEnter={playHoverSound}
                       />
                     </div>
 
@@ -271,12 +267,13 @@ useEffect(() => {
                     )}
 
                     <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                      <Button
-                        type="submit"
-                        className="w-full rounded-full"
-                        disabled={isSubmitting}
-                        onMouseEnter={playHoverSound}
-                      >
+                    <Button
+  type="submit"
+  className="w-full rounded-full"
+  disabled={isSubmitting}
+  onClick={playClickSound}
+>
+
                         {isSubmitting ? (
                           <span className="flex items-center">
                             <svg

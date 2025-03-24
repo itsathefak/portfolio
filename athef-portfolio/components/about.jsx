@@ -41,7 +41,6 @@ export default function About({ mode }) {
             transition={{ duration: 0.5, delay: 0.3 }}
             viewport={{ once: true }}
             className="prose prose-lg dark:prose-invert mx-auto"
-            onMouseEnter={playHoverSound}
           >
             {mode === "tech" ? (
               <p className="text-gray-300">

@@ -62,7 +62,7 @@ export default function Projects({ mode }) {
         "Interactive map integration using Mapbox GL and sound-enhanced UI with hover/click effects.",
         "Custom-built contact form with Nodemailer integration for secure email handling.",
       ],
-      video: "/videos/portfolio.mp4",
+      iframe: `<div style="position:relative;padding-top:56.25%;"><iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7309961301118672897?compact=1" frameborder="0" allowfullscreen="" title="Portfolio Project" style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:12px;"></iframe></div>`,
       poster: "/images/portfolio-thumbnail.jpg",
       image: "/images/portfolio-thumbnail.jpg",
       liveLink: "https://www.athefak.com/",

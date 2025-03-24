@@ -191,7 +191,6 @@ export default function Skills({ mode }) {
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.03 }}
                 onMouseEnter={() => {
-                  playHoverSound()
                   playPopSound()
                 }}
                 className="bg-white/5 backdrop-blur-sm rounded-xl p-5 border border-white/10 hover:border-primary/50 transition-all"

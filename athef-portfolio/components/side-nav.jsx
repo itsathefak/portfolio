@@ -71,70 +71,68 @@ export default function SideNav({ mode }) {
     }
   }, [])
 
-  // Setup Intersection Observer for detecting active section
   useEffect(() => {
-    // Don't update active section while programmatically scrolling
-    if (isScrolling) return
-
-    // Clean up previous observer if it exists
-    if (observerRef.current) {
-      observerRef.current.disconnect()
-    }
-
-    // Get all sections
-    const sections = document.querySelectorAll("section[id]")
-
-    // Create new observer with improved options
-    const observerOptions = {
-      root: null, // viewport
-      rootMargin: "0px 0px -50% 0px", // Consider element in view when it's in the top half of the viewport
-      threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5], // Multiple thresholds for better detection
-    }
-
-    // Track intersection ratios for all sections
     const sectionIntersectionRatios = new Map()
-
+  
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px 0px -50% 0px",
+      threshold: [0.3, 0.5, 0.7],
+    }
+  
+    let observer
+  
     const handleIntersect = (entries) => {
-      // Don't update while programmatically scrolling
       if (isScrolling) return
-
-      // Update intersection ratios for each entry
+  
       entries.forEach((entry) => {
         sectionIntersectionRatios.set(entry.target.id, entry.intersectionRatio)
       })
-
-      // Find the section with the highest intersection ratio
+  
       let maxRatio = 0
       let maxSection = activeSection
-
+  
       sectionIntersectionRatios.forEach((ratio, sectionId) => {
         if (ratio > maxRatio) {
           maxRatio = ratio
           maxSection = sectionId
         }
       })
-
-      // Only update if we have a valid section with some visibility
+  
       if (maxRatio > 0) {
         setActiveSection(maxSection)
       }
     }
-
-    observerRef.current = new IntersectionObserver(handleIntersect, observerOptions)
-
-    // Observe all sections
-    sections.forEach((section) => {
-      observerRef.current.observe(section)
-      // Initialize with zero intersection
-      sectionIntersectionRatios.set(section.id, 0)
-    })
-
-    return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect()
-      }
+  
+    const setupObserver = () => {
+      const sections = document.querySelectorAll("section[id]")
+      observer = new IntersectionObserver(handleIntersect, observerOptions)
+      sections.forEach((section) => {
+        sectionIntersectionRatios.set(section.id, 0)
+        observer.observe(section)
+      })
     }
-  }, [mode, isScrolling, activeSection])
+  
+    setupObserver()
+  
+    // Watch for DOM changes in case the sections change after mode switch
+    const mutationObserver = new MutationObserver(() => {
+      if (observer) observer.disconnect()
+      setupObserver()
+    })
+  
+    mutationObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+    })
+  
+    return () => {
+      if (observer) observer.disconnect()
+      mutationObserver.disconnect()
+    }
+  }, [mode, isScrolling])
+  
+
 
   const scrollToSection = (sectionId) => {
     playClickSound()
