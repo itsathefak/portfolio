@@ -10,6 +10,7 @@ export default function Volunteering({ mode }) {
   const { playHoverSound, playClickSound } = useSound()
   const mapRef = useRef(null)
   const [mapLoaded, setMapLoaded] = useState(false)
+  const [selectedVol, setSelectedVol] = useState(null)
 
   useEffect(() => {
     if (mode === "environmental" && mapRef.current && !mapLoaded) {
@@ -146,6 +147,7 @@ export default function Volunteering({ mode }) {
               {volunteering.map((vol, index) => (
                 <motion.div
                   key={vol.organization}
+                  onClick={() => setSelectedVol(vol)}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -321,6 +323,70 @@ export default function Volunteering({ mode }) {
           </div>
         </motion.div>
       </div>
+      <AnimatePresence>
+  {selectedVol && (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      onClick={() => setSelectedVol(null)}
+    >
+      <motion.div
+  initial={{ scale: 0.9, opacity: 0 }}
+  animate={{ scale: 1, opacity: 1 }}
+  exit={{ scale: 0.9, opacity: 0 }}
+  transition={{ type: "spring", damping: 20 }}
+  className="bg-slate-900 rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative"
+  onClick={(e) => e.stopPropagation()}
+>
+  {/* ✅ Mobile Close Button - now inside modal */}
+  <div className="block sm:hidden absolute top-4 right-4 z-50">
+    <button
+      onClick={() => setSelectedVol(null)}
+      className="bg-black/70 p-2 rounded-full hover:bg-black/90 transition"
+    >
+      <XIcon className="h-5 w-5 text-white" />
+    </button>
+  </div>
+
+  {/* Desktop Close Button */}
+  <div className="hidden sm:block absolute top-4 right-4 z-50">
+    <button
+      onClick={() => setSelectedVol(null)}
+      className="bg-black/70 text-white p-2 rounded-full hover:bg-black/90 transition"
+    >
+      <XIcon className="h-5 w-5" />
+    </button>
+  </div>
+
+        <div className="relative w-full h-64">
+          <Image
+            src={selectedVol.image}
+            alt={selectedVol.organization}
+            fill
+            className="object-cover rounded-t-xl"
+          />
+        </div>
+
+        <div className="p-6">
+          <h3 className="text-2xl font-bold mb-2">{selectedVol.organization}</h3>
+          <a
+            href={selectedVol.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/80"
+            onClick={playClickSound}
+          >
+            <ExternalLinkIcon className="h-5 w-5 mr-2" />
+            Visit Page
+          </a>
+        </div>
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
+
     </section>
   )
 }

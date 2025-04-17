@@ -168,12 +168,27 @@ export default function Certificates({ mode }) {
                   fill
                   className="object-cover rounded-t-xl"
                 />
-                <button
-                  onClick={closeCertificateDetails}
-                  className="absolute top-4 right-4 bg-black/50 p-2 rounded-full hover:bg-black/70 transition-colors"
-                >
-                  <XIcon className="h-5 w-5" />
-                </button>
+          {/* Desktop Close Button */}
+<div className="hidden sm:block absolute top-4 right-4 z-50">
+  <button
+    onClick={closeCertificateDetails}
+    className="bg-black/70 text-white p-2 rounded-full hover:bg-black/90 transition"
+  >
+    <XIcon className="h-5 w-5" />
+  </button>
+</div>
+
+{/* Mobile Close Button */}
+<div className="block sm:hidden fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+  <button
+    onClick={closeCertificateDetails}
+    className="bg-black/70 text-white px-4 py-2 rounded-full shadow-md hover:bg-black/90 transition"
+  >
+        <XIcon className="h-5 w-5" />
+
+  </button>
+</div>
+
               </div>
               <div className="p-6">
                 <div className="flex items-center mb-4">

@@ -217,6 +217,16 @@ export default function VolunteeringExperience() {
                   </a>
                 </div>
               </div>
+              {/* Mobile Close Button */}
+<div className="block sm:hidden fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+  <button
+    onClick={closeOrgDetails}
+    className="bg-black/70 text-white px-4 py-2 rounded-full shadow-md hover:bg-black/90 transition"
+  >
+    <XIcon className="h-5 w-5" />
+  </button>
+</div>
+
             </motion.div>
           </motion.div>
         )}

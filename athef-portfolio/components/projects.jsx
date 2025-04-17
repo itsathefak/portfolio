@@ -21,7 +21,7 @@ export default function Projects({ mode }) {
         "Implemented RESTful APIs for handling booking data, user authentication, and hotel information.",
         "Integrated Mapbox for geocoding to provide location-based hotel searches and weather API for real-time weather updates at the destination.",
       ],
-      video: "/videos/stayluxe.mp4",
+      iframe: `<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7295853197414281219?compact=1" height="399" width="100%" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>`,
       poster: "/images/stayluxe-thumbnail.jpg",
       image: "/images/stayluxe-thumbnail.jpg",
       liveLink: "https://stayluxe.onrender.com/listings/",
@@ -346,11 +346,11 @@ export default function Projects({ mode }) {
                           preload="metadata"
                           onMouseEnter={(e) => {
                             e.target.play();
-                            e.target.previousElementSibling.style.opacity = 0; // Hide thumbnail
+                            e.target.previousElementSibling.style.opacity = 0; 
                           }}
                           onMouseLeave={(e) => {
                             e.target.pause();
-                            e.target.previousElementSibling.style.opacity = 1; // Restore thumbnail
+                            e.target.previousElementSibling.style.opacity = 1; 
                           }}
                         >
                           <source src={project.video} type="video/mp4" />
@@ -450,12 +450,28 @@ export default function Projects({ mode }) {
                   </div>
                 )}
 
-                <button
-                  onClick={closeProjectDetails}
-                  className="absolute top-4 right-4 bg-black/50 p-2 rounded-full hover:bg-black/70 transition-colors"
-                >
-                  <XIcon className="h-5 w-5" />
-                </button>
+{/* Desktop close button */}
+<div className="hidden sm:block absolute top-4 right-4 z-50">
+  <button
+    onClick={closeProjectDetails}
+    className="bg-black/70 text-white p-2 rounded-full hover:bg-black/90 transition"
+  >
+    <XIcon className="h-5 w-5" />
+  </button>
+</div>
+
+{/* Mobile close button (bottom center) */}
+<div className="block sm:hidden fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+  <button
+    onClick={closeProjectDetails}
+    className="bg-black/70 text-white px-4 py-2 rounded-full shadow-md hover:bg-black/90 transition"
+  >
+    <XIcon className="h-5 w-5" />
+  </button>
+</div>
+
+
+
                 {selectedProject.status && (
                   <div className="absolute bottom-4 right-4 bg-primary text-white px-4 py-2 rounded-full text-sm font-medium">
                     {selectedProject.status}
@@ -538,6 +554,7 @@ export default function Projects({ mode }) {
                   </div>
                 )}
               </div>
+              
             </motion.div>
           </motion.div>
         )}
