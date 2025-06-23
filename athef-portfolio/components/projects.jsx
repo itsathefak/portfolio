@@ -12,6 +12,32 @@ export default function Projects({ mode }) {
 
   const techProjects = [
     {
+      title: "CoinScope",
+      description:
+        "A futuristic cryptocurrency analytics platform with real-time market data, AI investment simulations, and interactive comparison tools.",
+      technologies: [
+        "Next.js 14",
+        "Tailwind CSS",
+        "Chart.js",
+        "Framer Motion",
+        "CoinGecko API",
+        "Radix UI",
+      ],
+      details: [
+        "Developed using Next.js 14 App Router with modular architecture and optimized performance.",
+        "Implemented AI-powered investment simulator based on historical volatility and random market conditions.",
+        "Built dynamic crypto comparison tools with interactive charts using Chart.js and React Chart.js 2.",
+        "Integrated dark/light theme support using next-themes and styled with a custom cyberpunk-inspired Tailwind CSS design.",
+        "Used Radix UI primitives for consistent accessibility and component behavior across the app.",
+      ],
+      iframe: `<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7342965474739015680?compact=1" height="399" width="100%" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>`,
+      poster: "/images/coinscope-thumbnail.jpg",
+      image: "/images/coinscope-thumbnail.jpg",
+      liveLink: "https://coinscope-crypto.vercel.app/",
+      githubLink: "https://github.com/norarplm/coinscope",
+    },
+
+    {
       title: "StayLuxe",
       description:
         "A luxury hotel booking application allowing users to browse and book luxury hotel rooms online.",
@@ -346,11 +372,11 @@ export default function Projects({ mode }) {
                           preload="metadata"
                           onMouseEnter={(e) => {
                             e.target.play();
-                            e.target.previousElementSibling.style.opacity = 0; 
+                            e.target.previousElementSibling.style.opacity = 0;
                           }}
                           onMouseLeave={(e) => {
                             e.target.pause();
-                            e.target.previousElementSibling.style.opacity = 1; 
+                            e.target.previousElementSibling.style.opacity = 1;
                           }}
                         >
                           <source src={project.video} type="video/mp4" />
@@ -450,27 +476,25 @@ export default function Projects({ mode }) {
                   </div>
                 )}
 
-{/* Desktop close button */}
-<div className="hidden sm:block absolute top-4 right-4 z-50">
-  <button
-    onClick={closeProjectDetails}
-    className="bg-black/70 text-white p-2 rounded-full hover:bg-black/90 transition"
-  >
-    <XIcon className="h-5 w-5" />
-  </button>
-</div>
+                {/* Desktop close button */}
+                <div className="hidden sm:block absolute top-4 right-4 z-50">
+                  <button
+                    onClick={closeProjectDetails}
+                    className="bg-black/70 text-white p-2 rounded-full hover:bg-black/90 transition"
+                  >
+                    <XIcon className="h-5 w-5" />
+                  </button>
+                </div>
 
-{/* Mobile close button (bottom center) */}
-<div className="block sm:hidden fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
-  <button
-    onClick={closeProjectDetails}
-    className="bg-black/70 text-white px-4 py-2 rounded-full shadow-md hover:bg-black/90 transition"
-  >
-    <XIcon className="h-5 w-5" />
-  </button>
-</div>
-
-
+                {/* Mobile close button (bottom center) */}
+                <div className="block sm:hidden fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+                  <button
+                    onClick={closeProjectDetails}
+                    className="bg-black/70 text-white px-4 py-2 rounded-full shadow-md hover:bg-black/90 transition"
+                  >
+                    <XIcon className="h-5 w-5" />
+                  </button>
+                </div>
 
                 {selectedProject.status && (
                   <div className="absolute bottom-4 right-4 bg-primary text-white px-4 py-2 rounded-full text-sm font-medium">
@@ -538,23 +562,22 @@ export default function Projects({ mode }) {
                       <GithubIcon className="h-5 w-5 mr-2" />
                       View Code
                     </a>
-                    {selectedProject.liveLink && selectedProject.liveLink !== "#" && (
-  <a
-    href={selectedProject.liveLink}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="flex items-center bg-primary hover:bg-primary/80 transition-colors px-4 py-2 rounded-lg"
-    onClick={playClickSound}
-  >
-    <ExternalLinkIcon className="h-5 w-5 mr-2" />
-    Live Demo
-  </a>
-)}
-
+                    {selectedProject.liveLink &&
+                      selectedProject.liveLink !== "#" && (
+                        <a
+                          href={selectedProject.liveLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center bg-primary hover:bg-primary/80 transition-colors px-4 py-2 rounded-lg"
+                          onClick={playClickSound}
+                        >
+                          <ExternalLinkIcon className="h-5 w-5 mr-2" />
+                          Live Demo
+                        </a>
+                      )}
                   </div>
                 )}
               </div>
-              
             </motion.div>
           </motion.div>
         )}
