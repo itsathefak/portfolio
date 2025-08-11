@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { GithubIcon, LinkedinIcon } from "lucide-react"
-import { useSound } from "@/components/sound-provider"
+import { motion } from "framer-motion";
+import { GithubIcon, LinkedinIcon } from "lucide-react";
+import { useSound } from "@/components/sound-provider";
 
 export default function Footer({ mode }) {
-  const { playHoverSound } = useSound()
+  const { playHoverSound } = useSound();
 
-  const currentYear = new Date().getFullYear()
+  const currentYear = new Date().getFullYear();
 
   return (
     <footer className="py-8 mt-12 border-t border-white/10">
@@ -30,7 +30,7 @@ export default function Footer({ mode }) {
             className="flex items-center gap-4"
           >
             <motion.a
-              href="https://github.com/athefayub"
+              href="https://github.com/itsathefak"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.2, rotate: 10 }}
@@ -42,7 +42,7 @@ export default function Footer({ mode }) {
               <span className="sr-only">GitHub</span>
             </motion.a>
             <motion.a
-              href="https://linkedin.com/in/athefayub"
+              href="https://www.linkedin.com/in/athefak/"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.2, rotate: -10 }}
@@ -57,6 +57,5 @@ export default function Footer({ mode }) {
         </div>
       </div>
     </footer>
-  )
+  );
 }
-
