@@ -1,111 +1,26 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import { motion } from "framer-motion"
-import { useSound } from "@/components/sound-provider"
+import { motion } from "framer-motion";
 
-export default function Skills({ mode }) {
-  const { playHoverSound } = useSound()
-  const audioRef = useRef(null)
-
-  useEffect(() => {
-    audioRef.current = new Audio("/sounds/pop.mp3")
-    audioRef.current.load()
-
-    return () => {
-      audioRef.current = null
-    }
-  }, [])
-
-  const playPopSound = () => {
-    if (audioRef.current) {
-      audioRef.current.currentTime = 0
-      audioRef.current.play().catch((e) => console.log("Audio play failed:", e))
-    }
-  }
-
+export default function Skills({ mode = "tech" }) {
   const techSkills = [
-    {
-      name: "React",
-      icon: "/logos/react.svg",
-      level: 90,
-    },
-    {
-      name: "Vue.js",
-      icon: "/logos/vue.svg",
-      level: 85,
-    },
-    {
-      name: "Next.js",
-      icon: "/logos/next.svg",
-      level: 80,
-    },
-    {
-      name: "Node.js",
-      icon: "/logos/nodejs.svg",
-      level: 85,
-    },
-    {
-      name: "MongoDB",
-      icon: "/logos/mongodb.svg",
-      level: 80,
-    },
-    {
-      name: "Express",
-      icon: "/logos/express.svg",
-      level: 85,
-    },
-    {
-      name: "JavaScript",
-      icon: "/logos/javascript.svg",
-      level: 95,
-    },
-    {
-      name: "HTML5",
-      icon: "/logos/html5.svg",
-      level: 95,
-    },
-    {
-      name: "CSS3",
-      icon: "/logos/css3.svg",
-      level: 90,
-    },
-    {
-      name: "Tailwind",
-      icon: "/logos/tailwind.svg",
-      level: 90,
-    },
-    {
-      name: "Vite",
-      icon: "/logos/vite.svg",
-      level: 85,
-    },
-    {
-      name: "Firebase",
-      icon: "/logos/firebase.svg",
-      level: 75,
-    },
-    {
-      name: "AWS",
-      icon: "/logos/aws.svg",
-      level: 70,
-    },
-    {
-      name: "Figma",
-      icon: "/logos/figma.svg",
-      level: 90,
-    },
-    {
-      name: "Git",
-      icon: "/logos/git.svg",
-      level: 85,
-    },
-    {
-      name: "Jira",
-      icon: "/logos/jira.svg",
-      level: 90,
-    },
-  ]
+    { name: "React", icon: "/logos/react.svg", level: 90 },
+    { name: "Vue.js", icon: "/logos/vue.svg", level: 85 },
+    { name: "Next.js", icon: "/logos/next.svg", level: 80 },
+    { name: "Node.js", icon: "/logos/nodejs.svg", level: 85 },
+    { name: "MongoDB", icon: "/logos/mongodb.svg", level: 80 },
+    { name: "Express", icon: "/logos/express.svg", level: 85 },
+    { name: "JavaScript", icon: "/logos/javascript.svg", level: 95 },
+    { name: "HTML5", icon: "/logos/html5.svg", level: 95 },
+    { name: "CSS3", icon: "/logos/css3.svg", level: 90 },
+    { name: "Tailwind", icon: "/logos/tailwind.svg", level: 90 },
+    { name: "Vite", icon: "/logos/vite.svg", level: 85 },
+    { name: "Firebase", icon: "/logos/firebase.svg", level: 75 },
+    { name: "AWS", icon: "/logos/aws.svg", level: 70 },
+    { name: "Figma", icon: "/logos/figma.svg", level: 90 },
+    { name: "Git", icon: "/logos/git.svg", level: 85 },
+    { name: "Jira", icon: "/logos/jira.svg", level: 90 },
+  ];
 
   const environmentalSkills = [
     {
@@ -138,24 +53,19 @@ export default function Skills({ mode }) {
       icon: "/icons/conservation.svg",
       level: 75,
     },
-    {
-      name: "Ecological Monitoring",
-      icon: "/icons/monitoring.svg",
-      level: 70,
-    },
+    { name: "Ecological Monitoring", icon: "/icons/monitoring.svg", level: 70 },
     {
       name: "Transdisciplinary Learning",
       icon: "/icons/biodiversity.svg",
       level: 75,
     },
-  ]
+  ];
 
-  const currentSkills = mode === "tech" ? techSkills : environmentalSkills
+  const currentSkills = mode === "tech" ? techSkills : environmentalSkills;
 
   return (
-<section id="skills" className="py-20 relative">
-  <div className="container mx-auto px-4">
-
+    <section id="skills" className="py-20 relative">
+      <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -190,21 +100,22 @@ export default function Skills({ mode }) {
                 transition={{ duration: 0.5, delay: index * 0.05 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.03 }}
-                onMouseEnter={() => {
-                  playPopSound()
-                }}
                 className="bg-white/5 backdrop-blur-sm rounded-xl p-5 border border-white/10 hover:border-primary/50 transition-all"
               >
                 <div className="flex items-center mb-4">
                   <div className="w-10 h-10 mr-3">
                     <img
-                      src={skill.icon || `/placeholder.svg?height=40&width=40&text=${skill.name}`}
+                      src={
+                        skill.icon ||
+                        `/placeholder.svg?height=40&width=40&text=${skill.name}`
+                      }
                       alt={skill.name}
                       className="w-full h-full object-contain"
                     />
                   </div>
                   <h3 className="font-medium">{skill.name}</h3>
                 </div>
+
                 <div className="w-full bg-gray-800 rounded-full h-2.5">
                   <motion.div
                     className={`h-2.5 rounded-full ${
@@ -218,13 +129,14 @@ export default function Skills({ mode }) {
                     viewport={{ once: true }}
                   />
                 </div>
-                <div className="mt-2 text-right text-xs text-gray-400">{skill.level}%</div>
+                <div className="mt-2 text-right text-xs text-gray-400">
+                  {skill.level}%
+                </div>
               </motion.div>
             ))}
           </div>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
-

@@ -3,11 +3,9 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLinkIcon, GithubIcon, XIcon, InfoIcon } from "lucide-react";
-import { useSound } from "@/components/sound-provider";
 import Image from "next/image";
 
 export default function Projects({ mode }) {
-  const { playHoverSound, playClickSound } = useSound();
   const [selectedProject, setSelectedProject] = useState(null);
 
   const techProjects = [
@@ -214,12 +212,10 @@ export default function Projects({ mode }) {
     mode === "tech" ? techProjects : environmentalProjects;
 
   const openProjectDetails = (project) => {
-    playClickSound();
     setSelectedProject(project);
   };
 
   const closeProjectDetails = () => {
-    playClickSound();
     setSelectedProject(null);
   };
 
@@ -262,7 +258,6 @@ export default function Projects({ mode }) {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{ y: -10 }}
-                  onMouseEnter={playHoverSound}
                   onClick={() => openProjectDetails(project)}
                   className="bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all cursor-pointer h-full flex flex-col group"
                 >
@@ -308,10 +303,7 @@ export default function Projects({ mode }) {
                           href={project.githubLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            playClickSound();
-                          }}
+                          onClick={(e) => e.stopPropagation()}
                           className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
                         >
                           <GithubIcon className="h-4 w-4" />
@@ -321,10 +313,7 @@ export default function Projects({ mode }) {
                             href={project.liveLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              playClickSound();
-                            }}
+                            onClick={(e) => e.stopPropagation()}
                             className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
                           >
                             <ExternalLinkIcon className="h-4 w-4" />
@@ -346,24 +335,20 @@ export default function Projects({ mode }) {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{ y: -10 }}
-                  onMouseEnter={playHoverSound}
                   onClick={() => openProjectDetails(project)}
                   className="bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all cursor-pointer h-full flex flex-col group max-w-lg"
                 >
                   <div className="relative h-48 w-full overflow-hidden">
                     {project.video ? (
                       <div className="relative w-full h-full">
-                        {/* Display the thumbnail image initially */}
                         <Image
                           src={project.poster}
                           alt={`${project.title} thumbnail`}
                           width={400}
                           height={200}
                           className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 rounded-lg"
-                          style={{ opacity: 1 }} // Initially visible
+                          style={{ opacity: 1 }}
                         />
-
-                        {/* Video element */}
                         <video
                           className="absolute inset-0 w-full h-full object-cover transition-transform group-hover:scale-105 duration-500 rounded-lg"
                           muted
@@ -389,9 +374,9 @@ export default function Projects({ mode }) {
                           src={
                             project.image ||
                             "/placeholder.svg?height=200&width=400"
-                          } // Match the Tech projects' placeholder
+                          }
                           alt={project.title}
-                          fill // Ensures image fills the container
+                          fill
                           className="object-cover transition-transform group-hover:scale-105 duration-500 rounded-lg"
                         />
                       </div>
@@ -557,7 +542,6 @@ export default function Projects({ mode }) {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center bg-white/10 hover:bg-white/20 transition-colors px-4 py-2 rounded-lg"
-                      onClick={playClickSound}
                     >
                       <GithubIcon className="h-5 w-5 mr-2" />
                       View Code
@@ -569,7 +553,6 @@ export default function Projects({ mode }) {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center bg-primary hover:bg-primary/80 transition-colors px-4 py-2 rounded-lg"
-                          onClick={playClickSound}
                         >
                           <ExternalLinkIcon className="h-5 w-5 mr-2" />
                           Live Demo

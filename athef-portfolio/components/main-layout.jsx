@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+
 import Hero from "@/components/hero";
 import About from "@/components/about";
 import Skills from "@/components/skills";
@@ -18,34 +19,44 @@ import SoundProvider from "@/components/sound-provider";
 import MouseFollower from "@/components/mouse-follower";
 import CurrentTime from "@/components/current-time";
 import WeatherDisplay from "@/components/weather-display";
-import InitialLoader from "@/components/initial-loader";
+// import InitialLoader from "@/components/initial-loader";
 import Footer from "@/components/footer";
 import InteractivePuzzle from "@/components/interactive-puzzle";
 
 export default function MainLayout() {
   const [mode, setMode] = useState("tech");
   const [loading, setLoading] = useState(true);
+  const [showHud, setShowHud] = useState(false); // show time + weather only on Hero
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2500);
-
+    const timer = setTimeout(() => setLoading(false), 2500);
     return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
     const root = document.documentElement;
-    if (mode === "environmental") {
-      root.classList.add("environmental-mode");
-    } else {
-      root.classList.remove("environmental-mode");
-    }
+    if (mode === "environmental") root.classList.add("environmental-mode");
+    else root.classList.remove("environmental-mode");
   }, [mode]);
 
-  if (loading) {
-    return <InitialLoader />;
-  }
+  // Show HUD only while #home (Hero) is in view
+  useEffect(() => {
+    const hero = document.getElementById("home");
+    if (!hero) return;
+
+    // Set initial visibility
+    const rect = hero.getBoundingClientRect();
+    setShowHud(rect.bottom > 0 && rect.top < window.innerHeight * 0.95);
+
+    const io = new IntersectionObserver(
+      ([entry]) => setShowHud(entry.isIntersecting),
+      { threshold: 0.05 }
+    );
+    io.observe(hero);
+    return () => io.disconnect();
+  }, []);
+
+  // if (loading) return <InitialLoader />;
 
   return (
     <SoundProvider>
@@ -56,11 +67,21 @@ export default function MainLayout() {
           <ModeToggle mode={mode} setMode={setMode} />
         </div>
 
-        {/* Time & Weather (Weather moved below time & aligned left) */}
-        <div className="fixed top-4 left-4 z-40 flex flex-col items-start space-y-2">
-          <CurrentTime />
-          <WeatherDisplay />
-        </div>
+        {/* Time & Weather HUD — only on Hero.
+            Swap 'left-4' with 'right-4' if you prefer the right side. */}
+        <AnimatePresence>
+          {showHud && (
+            <motion.div
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              className="fixed top-4 left-4 z-40 flex flex-col items-start space-y-2"
+            >
+              <CurrentTime />
+              <WeatherDisplay />
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Side Navigation */}
         <SideNav mode={mode} />
@@ -108,6 +129,7 @@ export default function MainLayout() {
                     <EventsAcrossCanada />
                   </>
                 )}
+
                 <PersonalInfo mode={mode} />
                 <InteractivePuzzle mode={mode} />
                 <Contact mode={mode} />
