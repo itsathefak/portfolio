@@ -16,6 +16,21 @@ export default function Experience({ mode }) {
 
   const techExperiences = [
     {
+      title: "Senior Web Developer",
+      company: "CIBC",
+      period: "Sep 2025 - Present",
+      location: "Toronto, ON, Canada",
+      description: [
+        "Develop full-stack web applications using Vue.js (Vue 2 & Vue 3), focusing on performance, scalability, and maintainability.",
+        "Manage application state using Pinia and implement unit testing with Vitest.",
+        "Perform end-to-end testing using Cypress to ensure reliable and high-quality releases.",
+        "Use Git for version control and follow branching strategies for collaborative development.",
+        "Work with Jenkins for CI/CD pipelines to automate build, test, and deployment processes.",
+        "Collaborate with designers, product managers, and other developers to deliver scalable and responsive solutions.",
+      ],
+      icon: <BriefcaseIcon className="h-5 w-5" />,
+    },
+    {
       title: "Software Developer",
       company: "Hafman Consulting Groups",
       period: "Feb 2025 - Present",
